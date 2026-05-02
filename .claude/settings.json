@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(bun install)",
+      "Bash(bun run dev)",
+      "Bash(bun run build)",
+      "Bash(bun run start)",
+      "Bash(bun run typecheck)",
+      "Read(.claude/**)"
+    ],
+    "deny": [
+      "Edit(package.json)"
+    ],
+    "hooks": {
+      "PostToolUse": [
+        {
+          "matcher": "Edit|Write",
+          "hooks": [
+            {
+              "type": "command",
+              "command": "cd ~/ML/demo-issue-tracker && bun run typecheck",
+              "statusMessage": "Running typecheck...."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
